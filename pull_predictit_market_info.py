@@ -24,7 +24,7 @@ def parse_response(response):
 while error == False:
     time_this_loop = time.time()
 
-    if time_this_loop > last_read + 30.0: #it's time to read market info
+    if time_this_loop > last_read + 60.0*5.0: #it's time to read market info
         print('Pulling Market Info...')
 
         #read mkt info
@@ -32,7 +32,7 @@ while error == False:
         all_mkt_info[time_this_loop] = parse_response(response) #convert the API response to a dict
         last_read = time_this_loop
 
-    if time_this_loop > last_dump + 60.0*10:
+    if time_this_loop > last_dump + 60.0*100.0:
         print('Saving all data...')
 
         #save mkt info
